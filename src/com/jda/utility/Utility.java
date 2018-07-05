@@ -2,6 +2,8 @@ package com.jda.utility;
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.HashSet;
 
 public class Utility {
 	Scanner scaninput;
@@ -62,7 +64,7 @@ public class Utility {
 	 */
 	public Boolean leapYear(int input) {
 		Boolean leap;
-		if (input % 4 == 0 && input % 100 != 0)
+		if (input % 400== 0 ||input % 100 == 0&&input%4==0)
 			leap = true;
 		else
 			leap = false;
@@ -80,7 +82,7 @@ public class Utility {
 		if (input > 31)
 			System.out.println("exceeding input value");
 		else {
-			for (i = 0; i < input; i++)
+			for (i = 1; i < input; i++)
 				System.out.println(Math.pow(2, i));
 
 		}
@@ -158,5 +160,37 @@ public class Utility {
 		}
 		return fate;
 
+	}
+
+	/**
+	 * function to find no.of random numbers used to produce no.of coupons
+	 * @param coupons
+	 * @param noofcoupons
+	 * @param ncoupons
+	 * @return
+	 */
+	public int countsRandomProcess(int[] coupons, int noofcoupons, int ncoupons) {
+		Random rand = new Random();
+		int count = 0;
+		Set<Integer> impset = new HashSet<Integer>();
+		Set<Integer> set = new HashSet<Integer>();
+		for (int i = 0; i < ncoupons; i++) {
+			impset.add(coupons[i]);
+			
+		}
+		while (impset.isEmpty() != true) {
+			int random = rand.nextInt(noofcoupons);
+			if(set.contains(random)==false)
+			{
+			set.add(random);
+			count++;
+			}
+			if (impset.contains(random) == true) {
+				impset.remove(random);
+				
+			}
+			
+		}
+		return count;
 	}
 }
