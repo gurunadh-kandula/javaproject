@@ -128,4 +128,35 @@ public class Utility {
 				System.out.println(input);
 		}
 	}
+
+	/**
+	 * Function to find the win or fail count of the gambler
+	 * 
+	 * @param stake
+	 * @param goal
+	 * @param nooftimes
+	 * @return
+	 */
+	public int[] gamblersFate(int stake, int goal, int nooftimes) {
+		int[] fate = new int[2];
+		int stakeinuse;
+		Random rand = new Random();
+		float randno;
+		for (int i = 0; i < nooftimes; i++) {
+			stakeinuse = stake;
+			while (stakeinuse != 0 && stakeinuse != goal) {
+				randno = rand.nextFloat();
+				if (randno < 0.5f)
+					stakeinuse = stakeinuse - 1;
+				else
+					stakeinuse = stakeinuse + 1;
+			}
+			if (stakeinuse == 0)
+				fate[0]++;
+			else
+				fate[1]++;
+		}
+		return fate;
+
+	}
 }
