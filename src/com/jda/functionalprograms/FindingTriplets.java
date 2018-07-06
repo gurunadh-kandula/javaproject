@@ -1,7 +1,6 @@
-
 /******************************************************************************
- *  
- *  Purpose:Finding triplets tha makes sum as zero
+ *   
+ *  Purpose:Finding triplets that makes sum as zero
  *
  *  @author  gurunadh
  *  @version 1.0
@@ -20,10 +19,10 @@ public class FindingTriplets {
 	Utility utility = new Utility();
 	numbers= utility.inputInteger();
 	int[]numberarray=new int[numbers];
+	System.out.println("enter the array numbers");
 	for (int i = 0; i < numbers; i++) {
 		numberarray[i] = utility.inputInteger();
-  utility.	findingTriplets(numberarray);
-	}
-
+ }
+	 utility.	findingTriplets(numberarray);
 }
 }

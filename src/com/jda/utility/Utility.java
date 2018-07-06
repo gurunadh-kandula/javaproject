@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.HashSet;
 import java.util.Arrays;
+import java.io.PrintWriter;
 
 public class Utility {
 	Scanner scaninput;
@@ -22,6 +23,16 @@ public class Utility {
 		int input = scaninput.nextInt();
 		return input;
 
+	}
+
+	public boolean inputboolean() {
+		boolean bool = scaninput.nextBoolean();
+		return bool;
+	}
+
+	public double inputdouble() {
+		double input = scaninput.nextDouble();
+		return input;
 	}
 
 	/**
@@ -196,6 +207,72 @@ public class Utility {
 	}
 
 	/**
+	 * Printing 2d array using printwriter
+	 * 
+	 * @param input
+	 * @param m
+	 * @param n
+	 */
+
+	public void printingArray(int input, int m, int n) {
+		PrintWriter out = new PrintWriter(System.out);
+		switch (input) {
+		case 0: {
+			int[][] array = new int[m][n];
+			for (int i = 0; i < m; i++) {
+				for (int j = 0; j < n; j++) {
+					array[i][j] = inputInteger();
+				}
+			}
+			System.out.println("integer 2d array is");
+			for (int i = 0; i < m; i++) {
+				for (int j = 0; j < n; j++) {
+					out.print(array[i][j] + "  ");
+				}
+				out.println();
+			}
+			break;
+		}
+
+		case 1: {
+			boolean[][] array1 = new boolean[m][n];
+			for (int i = 0; i < m; i++) {
+				for (int j = 0; j < n; j++) {
+					array1[i][j] = inputboolean();
+				}
+			}
+			System.out.println("boolean 2d array is");
+			for (int i = 0; i < m; i++) {
+				for (int j = 0; j < n; j++) {
+					out.print(array1[i][j] + " ");
+				}
+				out.println();
+			}
+
+			break;
+		}
+		case 2: {
+			double[][] array2 = new double[m][n];
+			for (int i = 0; i < m; i++) {
+				for (int j = 0; j < n; j++) {
+					array2[i][j] = inputdouble();
+				}
+			}
+			System.out.println("double 2d array is");
+			for (int i = 0; i < m; i++) {
+				for (int j = 0; j < n; j++) {
+					out.print(array2[i][j] + " ");
+				}
+				out.println();
+			}
+
+		}
+		}
+		out.flush();
+		out.close();
+	}
+
+	/**
 	 * Function to find the euclidean distance between (x,y) coordinates and
 	 * origin(0,0)
 	 * 
@@ -237,16 +314,31 @@ public class Utility {
 			permutationsOfStringUsingRecursion(inputstring, i + 1, end);
 			inputstring = swap(inputstring, i, start);
 		}
-
 	}
-	public void findingTriplets(int numberarray[])
-	{
-		Arrays.sort(numberarray);
-		if(numberarray[0]>=0)
-			System.out.println("no negative numbers present in the array,so no triplets ");
-		else
-		{
-			
+
+	/**
+	 * Function to find the triplets in the given array that make the sum equal to zero
+	 * 
+	 * @param numberarray
+	 */
+	public void findingTriplets(int numberarray[]) {
+		int i, j, k,count=0;
+	 int length = numberarray.length;
+		for (i = 0; i < length; i++) {
+			for (j = 1; j < length - 1; j++) {
+				for (k = 2; k < length - 2; k++) {
+					if((numberarray[i]+numberarray[j]+numberarray[k])==0)
+					{ count++;
+						System.out.print(numberarray[i]+" ");
+						System.out.print(numberarray[j]+" ");
+						System.out.print(numberarray[k]+"");
+						System.out.println();
+					}
+				}
+
+			}
+
 		}
+		System.out.println("no.of triplets found in the array are  "+count);
 	}
 }
