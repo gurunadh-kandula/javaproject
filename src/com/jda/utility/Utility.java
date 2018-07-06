@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Arrays;
 
 public class Utility {
 	Scanner scaninput;
@@ -64,7 +65,7 @@ public class Utility {
 	 */
 	public Boolean leapYear(int input) {
 		Boolean leap;
-		if (input % 400== 0 ||input % 100 == 0&&input%4==0)
+		if (input % 400 == 0 || input % 100 == 0 && input % 4 == 0)
 			leap = true;
 		else
 			leap = false;
@@ -164,6 +165,7 @@ public class Utility {
 
 	/**
 	 * function to find no.of random numbers used to produce no.of coupons
+	 * 
 	 * @param coupons
 	 * @param noofcoupons
 	 * @param ncoupons
@@ -176,21 +178,75 @@ public class Utility {
 		Set<Integer> set = new HashSet<Integer>();
 		for (int i = 0; i < ncoupons; i++) {
 			impset.add(coupons[i]);
-			
+
 		}
 		while (impset.isEmpty() != true) {
 			int random = rand.nextInt(noofcoupons);
-			if(set.contains(random)==false)
-			{
-			set.add(random);
-			count++;
+			if (set.contains(random) == false) {
+				set.add(random);
+				count++;
 			}
 			if (impset.contains(random) == true) {
 				impset.remove(random);
-				
+
 			}
-			
+
 		}
 		return count;
+	}
+
+	/**
+	 * Function to find the euclidean distance between (x,y) coordinates and
+	 * origin(0,0)
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public double euclideanDistance(int x, int y) {
+		double distance;
+		distance = (double) Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
+		return distance;
+
+	}
+
+	/**
+	 * Function to get permutations of a string using recursion
+	 * 
+	 * @param inputstring
+	 * @param start
+	 * @param end
+	 */
+	public String swap(String input, int i, int j) {
+		char temp;
+		char[] inputarray = input.toCharArray();
+		temp = inputarray[i];
+		inputarray[i] = inputarray[j];
+		inputarray[j] = temp;
+		input = String.valueOf(inputarray);
+		return input;
+
+	}
+
+	public void permutationsOfStringUsingRecursion(String inputstring, int start, int end) {
+		int i;
+		if (start == end)
+			System.out.println(inputstring);
+		for (i = start; i <= end; i++) {
+			inputstring = swap(inputstring, i, start);
+			permutationsOfStringUsingRecursion(inputstring, i + 1, end);
+			inputstring = swap(inputstring, i, start);
+		}
+
+	}
+	public void findingTriplets(int numberarray[])
+	{
+		Arrays.sort(numberarray);
+		if(numberarray[0]>=0)
+			System.out.println("no negative numbers present in the array,so no triplets ");
+		else
+		{
+			
+		}
 	}
 }
