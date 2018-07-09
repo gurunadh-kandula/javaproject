@@ -409,6 +409,7 @@ public class Utility {
 
 	/**
 	 * To check the functions are anagram or not
+	 * 
 	 * @param string1
 	 * @param string2
 	 */
@@ -419,19 +420,46 @@ public class Utility {
 		string2 = string2.replaceAll("\\s+", "");
 		string2 = string2.toLowerCase();
 		if (string1.length() == string2.length()) {
-			char[]string1array=string1.toCharArray();
-			char[]string2array=string2.toCharArray();
+			char[] string1array = string1.toCharArray();
+			char[] string2array = string2.toCharArray();
 			Arrays.sort(string1array);
 			Arrays.sort(string2array);
-			
-			bool=Arrays.equals(string1array,string2array);
-			if(bool)
+
+			bool = Arrays.equals(string1array, string2array);
+			if (bool)
 				System.out.println("they are  anagram");
 			else
 				System.out.println("they are  not a anagaram");
-			
+
 		} else
 			System.out.println("they are not a anagram");
+
+	}
+
+	/**To check a number is a prime or not
+	 * @param current
+	 * @return
+	 */
+	public boolean checkPrime(int current) {
+		for (int i = 2; i <= Math.sqrt(current); i++) {
+			if (current % i == 0)
+				return false;
+		}
+		return true;
+	}
+
+	/** For finding the prime numbers below athe given number
+	 * @param input
+	 */
+	public void printPrimes(int input) {
+		int i;
+		for (i = 2; i <= input; i++) {
+			if (checkPrime(i))
+				System.out.println(i);
+			else
+				continue;
+
+		}
 
 	}
 }
