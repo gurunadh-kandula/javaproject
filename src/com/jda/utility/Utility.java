@@ -378,6 +378,7 @@ public class Utility {
 
 	/**
 	 * Prints the roots of Quadratic function
+	 * 
 	 * @param a
 	 * @param b
 	 * @param c
@@ -387,20 +388,50 @@ public class Utility {
 		delta = b * b - (4 * a * c);
 		double root1 = (-b + Math.sqrt(delta)) / (2 * a);
 		double root2 = (-b - Math.sqrt(delta)) / (2 * a);
-		System.out.println("roots of the given quadratic function are   " + root1+ root2);
+		System.out.println("roots of the given quadratic function are   " + root1 + root2);
 
 	}
+
 	/**
-	 * Compute the windchill value using formula given by National Weather Service
+	 * Compute the windchill value using formula given by National Weather
+	 * Service
+	 * 
 	 * @param t
 	 * @param v
 	 * @return
 	 */
-	public double windChill(double t ,double v)
-	{
+	public double windChill(double t, double v) {
 		double windchill;
-		windchill=35.74+0.6125*t+(0.4275*t-35.75)*(Math.pow(v, 0.16));
-		
+		windchill = 35.74 + 0.6125 * t + (0.4275 * t - 35.75) * (Math.pow(v, 0.16));
+
 		return windchill;
+	}
+
+	/**
+	 * To check the functions are anagram or not
+	 * @param string1
+	 * @param string2
+	 */
+	public void checkAnagram(String string1, String string2) {
+		boolean bool;
+		string1 = string1.replaceAll("\\s+", "");
+		string1 = string1.toLowerCase();
+		string2 = string2.replaceAll("\\s+", "");
+		string2 = string2.toLowerCase();
+		if (string1.length() == string2.length()) {
+			char[]string1array=string1.toCharArray();
+			char[]string2array=string2.toCharArray();
+			Arrays.sort(string1array);
+			Arrays.sort(string2array);
+			
+			bool=Arrays.equals(string1array,string2array);
+			if(bool)
+				System.out.println("they are  anagram");
+			else
+				System.out.println("they are  not a anagaram");
+			
+		} else
+			System.out.println("they are not a anagram");
+
 	}
 }
