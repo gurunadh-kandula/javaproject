@@ -305,33 +305,49 @@ public class Utility {
 
 	}
 
+	public boolean shouldSwap(String inputstring, int start, int current) {
+		boolean check = true;
+		char[] inputarray = inputstring.toCharArray();
+		for (int i = start; i < current; i++) {
+			if (inputarray[i] == inputarray[current])
+				check = false;
+		}
+
+		return check;
+	}
+
 	public void permutationsOfStringUsingRecursion(String inputstring, int start, int end) {
 		int i;
+		boolean check;
 		if (start == end)
 			System.out.println(inputstring);
 		for (i = start; i <= end; i++) {
-			inputstring = swap(inputstring, i, start);
-			permutationsOfStringUsingRecursion(inputstring, i + 1, end);
-			inputstring = swap(inputstring, i, start);
+			check = shouldSwap(inputstring, start, i);
+			if (check) {
+				inputstring = swap(inputstring, start, i);
+				permutationsOfStringUsingRecursion(inputstring, start + 1, end);
+				inputstring = swap(inputstring, start, i);
+			}
 		}
 	}
 
 	/**
-	 * Function to find the triplets in the given array that make the sum equal to zero
+	 * Function to find the triplets in the given array that make the sum equal
+	 * to zero
 	 * 
 	 * @param numberarray
 	 */
 	public void findingTriplets(int numberarray[]) {
-		int i, j, k,count=0;
-	 int length = numberarray.length;
-		for (i = 0; i < length; i++) {
-			for (j = 1; j < length - 1; j++) {
-				for (k = 2; k < length - 2; k++) {
-					if((numberarray[i]+numberarray[j]+numberarray[k])==0)
-					{ count++;
-						System.out.print(numberarray[i]+" ");
-						System.out.print(numberarray[j]+" ");
-						System.out.print(numberarray[k]+"");
+		int i, j, k, count = 0;
+		int length = numberarray.length;
+		for (i = 0; i < length - 2; i++) {
+			for (j = 1 + i; j < length - 1; j++) {
+				for (k = 1 + j; k < length; k++) {
+					if ((numberarray[i] + numberarray[j] + numberarray[k]) == 0) {
+						count++;
+						System.out.print(numberarray[i] + " ");
+						System.out.print(numberarray[j] + " ");
+						System.out.print(numberarray[k] + "");
 						System.out.println();
 					}
 				}
@@ -339,6 +355,52 @@ public class Utility {
 			}
 
 		}
-		System.out.println("no.of triplets found in the array are  "+count);
+		System.out.println("no.of triplets found in the array are  " + count);
+	}
+
+	/**
+	 * stopwatch works between start and end command
+	 * 
+	 * @param flag
+	 * @return
+	 */
+	public void stopWatch() {
+		long start = System.currentTimeMillis();
+		long j = 1;
+		for (int i = 0; i < 12000; i++) {
+			j = j + 3;
+			System.out.println(j);
+		}
+		long end = System.currentTimeMillis();
+		System.out.println(end - start);
+
+	}
+
+	/**
+	 * Prints the roots of Quadratic function
+	 * @param a
+	 * @param b
+	 * @param c
+	 */
+	public void rootsQuadratic(double a, double b, double c) {
+		double delta;
+		delta = b * b - (4 * a * c);
+		double root1 = (-b + Math.sqrt(delta)) / (2 * a);
+		double root2 = (-b - Math.sqrt(delta)) / (2 * a);
+		System.out.println("roots of the given quadratic function are   " + root1+ root2);
+
+	}
+	/**
+	 * Compute the windchill value using formula given by National Weather Service
+	 * @param t
+	 * @param v
+	 * @return
+	 */
+	public double windChill(double t ,double v)
+	{
+		double windchill;
+		windchill=35.74+0.6125*t+(0.4275*t-35.75)*(Math.pow(v, 0.16));
+		
+		return windchill;
 	}
 }
