@@ -4,6 +4,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.PrintWriter;
 
@@ -413,7 +414,7 @@ public class Utility {
 	 * @param string1
 	 * @param string2
 	 */
-	public void checkAnagram(String string1, String string2) {
+	public boolean checkAnagram(String string1, String string2) {
 		boolean bool;
 		string1 = string1.replaceAll("\\s+", "");
 		string1 = string1.toLowerCase();
@@ -426,17 +427,14 @@ public class Utility {
 			Arrays.sort(string2array);
 
 			bool = Arrays.equals(string1array, string2array);
-			if (bool)
-				System.out.println("they are  anagram");
-			else
-				System.out.println("they are  not a anagaram");
-
+			return bool;
 		} else
-			System.out.println("they are not a anagram");
-
+			return false;
 	}
 
-	/**To check a number is a prime or not
+	/**
+	 * To check a number is a prime or not
+	 * 
 	 * @param current
 	 * @return
 	 */
@@ -448,7 +446,9 @@ public class Utility {
 		return true;
 	}
 
-	/** For finding the prime numbers below athe given number
+	/**
+	 * For finding the prime numbers below the given number
+	 * 
 	 * @param input
 	 */
 	public void printPrimes(int input) {
@@ -460,6 +460,73 @@ public class Utility {
 				continue;
 
 		}
+	}
 
+	/**
+	 * function to check whether a number is a palindrome or not
+	 * 
+	 * @param current
+	 * @return
+	 */
+	public boolean checkPalindrome(int current) {
+		int last, first = 0, count = 0;
+		last = current % 10;
+		int flag = current;
+		while (flag != 0) {
+			flag = flag / 10;
+			count++;
+		}
+		if (count == 3)
+			first = current / 100;
+		if (count == 2)
+			first = current / 10;
+		if (count == 1)
+			first = current;
+		if (first == last)
+			return true;
+		else
+			return false;
+	}
+
+	/**
+	 * Prints prime numbers which are palindromes
+	 * 
+	 * @param input
+	 */
+	public void printPrimePalindromes(int input) {
+		int i;
+		for (i = 2; i <= input; i++) {
+			if (checkPrime(i)) {
+				if (checkPalindrome(i))
+					System.out.println(i);
+			} else
+				continue;
+
+		}
+
+	}
+
+	/**prints prime numbers which are anagrams
+	 * @param input
+	 */
+	public void primeAnagram(int input) {
+		int i;
+		ArrayList<String> list = new ArrayList<String>();
+		for (i = 2; i <= input; i++) {
+			if (checkPrime(i))
+				list.add(Integer.toString(i));
+		}
+		for (i = 0; i < list.size(); i++) {
+			for (int j = i + 1; j < list.size(); j++) {
+				boolean bool = checkAnagram(list.get(i), list.get(j));
+				if (bool) {
+					System.out.println("These prime numbers are anagram");
+					System.out.println(list.get(i));
+					System.out.println(list.get(j));
+
+				}
+
+			}
+		}
 	}
 }
