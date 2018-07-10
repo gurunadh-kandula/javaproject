@@ -19,7 +19,12 @@ public class Utility {
 		String input = scaninput.nextLine();
 		return input;
 	}
-
+	public String inputstring()
+	{
+		String input=scaninput.next();
+		return input;
+	}
+	
 	public int inputInteger() {
 		int input = scaninput.nextInt();
 		return input;
@@ -532,23 +537,52 @@ public class Utility {
 		}
 	}
 
-	public boolean binarySearchInt(int[] array, int search) {
-		int start = 0;
-		int mid;
-		int end = array.length;
-		Arrays.sort(array);
-		while (start <= end) {
-			mid = (end - start) / 2;
-			if (array[mid] == search)
-				return true;
-			else {
-				if (search < array[mid])
-					end = mid - 1;
-				else
-					start = mid + 1;
+	
+	 
+	  
+	 
+	public static <T extends Comparable<T>> void genericBubbleSort(T[] inputarray, int length) {
+		T temp;
+		boolean swap = false;
+		for (int i = 0; i < length - 1; i++) {
+			for (int j = 0; j < (length - i - 1); j++) {
+				if (inputarray[j].compareTo(inputarray[j + 1]) > 0) {
+					temp = inputarray[j + 1];
+					inputarray[j + 1] = inputarray[j];
+					inputarray[j] = temp;
+					swap = true;
+				}
+
 			}
+			if (swap == false)
+				break;
 		}
-		return false;
+		for (int i = 0; i < length; i++) {
+			System.out.println(inputarray[i]);
+		}
+
 	}
-	public binarysearchString
+
+	public static <S  extends Comparable<S>> void genericInsertionSort(S[] inputarray, int length) {
+		S current;
+		int j;
+		for (int i = 1; i < length; i++) {
+			current = inputarray[i];
+			j = i - 1;
+			while (j >= 0 && (inputarray[j].compareTo(current)) > 0) {
+				inputarray[j + 1] = inputarray[j];
+				j = j - 1;
+			}
+			inputarray[j + 1] = current;
+		}
+		for (int i = 0; i < length; i++) {
+			System.out.println(inputarray[i]);
+	}
+	}
+	public static <T extends Comparable<T>>void genericBinarySearch(T[]inputarray,int length)
+	{
+		
+		
+		
+	}
 }
