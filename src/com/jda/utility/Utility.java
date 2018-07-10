@@ -506,7 +506,9 @@ public class Utility {
 
 	}
 
-	/**prints prime numbers which are anagrams
+	/**
+	 * prints prime numbers which are anagrams
+	 * 
 	 * @param input
 	 */
 	public void primeAnagram(int input) {
@@ -529,4 +531,24 @@ public class Utility {
 			}
 		}
 	}
+
+	public boolean binarySearchInt(int[] array, int search) {
+		int start = 0;
+		int mid;
+		int end = array.length;
+		Arrays.sort(array);
+		while (start <= end) {
+			mid = (end - start) / 2;
+			if (array[mid] == search)
+				return true;
+			else {
+				if (search < array[mid])
+					end = mid - 1;
+				else
+					start = mid + 1;
+			}
+		}
+		return false;
+	}
+	public binarysearchString
 }
