@@ -529,4 +529,23 @@ public class Utility {
 			}
 		}
 	}
+	public static<T implements int>boolean genericBinarySearch(T[] inputarray,T input)
+	{int length=inputarray.length;
+	inputarray=inputarray.sort();
+	int start=0;
+	int end=length-1;
+	int mid=length/2;
+	if(input<inputarray[mid])
+		end=mid-1;
+		else
+		{
+			if(input>inputarray[mid])
+				start=mid+1;
+			else
+				return true;
+	
+		}
+		
+		
+	}
 }
