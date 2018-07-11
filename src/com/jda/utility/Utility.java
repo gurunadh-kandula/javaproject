@@ -7,6 +7,9 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.PrintWriter;
+import java.io.BufferedReader;
+import java.io.FileReader;
+
 
 public class Utility {
 	Scanner scaninput;
@@ -19,12 +22,12 @@ public class Utility {
 		String input = scaninput.nextLine();
 		return input;
 	}
-	public String inputstring()
-	{
-		String input=scaninput.next();
+
+	public String inputstring() {
+		String input = scaninput.next();
 		return input;
 	}
-	
+
 	public int inputInteger() {
 		int input = scaninput.nextInt();
 		return input;
@@ -537,11 +540,7 @@ public class Utility {
 		}
 	}
 
-	
-	 
-	  
-	 
-	public static <T extends Comparable<T>> void genericBubbleSort(T[] inputarray, int length) {
+	public static <T extends Comparable<T>> void  genericBubbleSort(T[] inputarray, int length) {
 		T temp;
 		boolean swap = false;
 		for (int i = 0; i < length - 1; i++) {
@@ -557,13 +556,14 @@ public class Utility {
 			if (swap == false)
 				break;
 		}
+		
 		for (int i = 0; i < length; i++) {
 			System.out.println(inputarray[i]);
 		}
 
 	}
 
-	public static <S  extends Comparable<S>> void genericInsertionSort(S[] inputarray, int length) {
+	public static <S extends Comparable<S>> S[]genericInsertionSort(S[] inputarray, int length) {
 		S current;
 		int j;
 		for (int i = 1; i < length; i++) {
@@ -575,14 +575,56 @@ public class Utility {
 			}
 			inputarray[j + 1] = current;
 		}
+		
 		for (int i = 0; i < length; i++) {
 			System.out.println(inputarray[i]);
+		}
+		return inputarray;
 	}
+
+	public static <K extends Comparable<K>> boolean genericBinarySearch(K[] inputarray, K search, int start, int end) {
+int mid;
+		 mid = (start + (end-1) / 2);
+		if(search.compareTo(inputarray[mid])==0)
+			return true;
+		else
+		{
+		if (search.compareTo(inputarray[mid])< 0)
+      genericBinarySearch(inputarray, search, start,mid-1);
+		genericBinarySearch(inputarray, search, mid+1, end);
+   
 	}
-	public static <T extends Comparable<T>>void genericBinarySearch(T[]inputarray,int length)
-	{
-		
-		
-		
+		 return  false;
+		 
+	}
+
+	/** Function to guess the number
+	 * @param n
+	 * @param start
+	 * @param end
+	 */
+	public void guessNumber(int n, int start, int end) {
+		String str;
+
+		if (n > 1) {
+			int mid = ((start + end) / 2);
+			System.out.println("Is the number is between " + start + " " + mid);
+			str = inputstring();
+			if (str.equals("yes"))
+				guessNumber(n - 1, start, mid);
+			else
+				guessNumber(n - 1, mid + 1, end);
+
+		} else {
+			System.out.println("is the number is  " + start);
+			String str1 = inputstring();
+			if (str1.equals("yes"))
+				System.out.println("your number is  " + start);
+			else
+				System.out.println("your number is  " + end);
+
+		}
 	}
 }
+
+
