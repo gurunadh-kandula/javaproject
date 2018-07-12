@@ -10,7 +10,6 @@ import java.io.PrintWriter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 
-
 public class Utility {
 	Scanner scaninput;
 
@@ -540,7 +539,7 @@ public class Utility {
 		}
 	}
 
-	public static <T extends Comparable<T>> void  genericBubbleSort(T[] inputarray, int length) {
+	public static <T extends Comparable<T>> void genericBubbleSort(T[] inputarray, int length) {
 		T temp;
 		boolean swap = false;
 		for (int i = 0; i < length - 1; i++) {
@@ -556,14 +555,14 @@ public class Utility {
 			if (swap == false)
 				break;
 		}
-		
+
 		for (int i = 0; i < length; i++) {
 			System.out.println(inputarray[i]);
 		}
 
 	}
 
-	public static <S extends Comparable<S>> S[]genericInsertionSort(S[] inputarray, int length) {
+	public static <S extends Comparable<S>> S[] genericInsertionSort(S[] inputarray, int length) {
 		S current;
 		int j;
 		for (int i = 1; i < length; i++) {
@@ -575,7 +574,7 @@ public class Utility {
 			}
 			inputarray[j + 1] = current;
 		}
-		
+
 		for (int i = 0; i < length; i++) {
 			System.out.println(inputarray[i]);
 		}
@@ -583,22 +582,23 @@ public class Utility {
 	}
 
 	public static <K extends Comparable<K>> boolean genericBinarySearch(K[] inputarray, K search, int start, int end) {
-int mid;
-		 mid = (start + (end-1) / 2);
-		if(search.compareTo(inputarray[mid])==0)
+		int mid;
+		mid = (start + (end - 1) / 2);
+		if (search.compareTo(inputarray[mid]) == 0)
 			return true;
-		else
-		{
-		if (search.compareTo(inputarray[mid])< 0)
-      genericBinarySearch(inputarray, search, start,mid-1);
-		genericBinarySearch(inputarray, search, mid+1, end);
-   
-	}
-		 return  false;
-		 
+		else {
+			if (search.compareTo(inputarray[mid]) < 0)
+				genericBinarySearch(inputarray, search, start, mid - 1);
+			genericBinarySearch(inputarray, search, mid + 1, end);
+
+		}
+		return false;
+
 	}
 
-	/** Function to guess the number
+	/**
+	 * Function to guess the number
+	 * 
 	 * @param n
 	 * @param start
 	 * @param end
@@ -625,6 +625,80 @@ int mid;
 
 		}
 	}
+
+	
+	
+	
+	
+	/** Function to merge the string arrays
+	 * @param stringarray
+	 * @param start
+	 * @param mid
+	 * @param end
+	 */
+	public void merge(String stringarray[],int start,int mid,int end)
+	{ int length1=mid-start+1;
+	int length2=end-mid;
+	String []left=new String[length1];
+	String []right=new String[length2];
+	for(int i=0;i<length1;i++)
+	{
+		left[i]=stringarray[i+start];
+	
+	}
+		for(int i=0;i<length2;i++)
+		{
+			right[i]=stringarray[i+mid+1];
+			
+		}
+		int i=0,j=0;
+		int k=start;
+		while( i<length1&& j<length2)
+		{
+			if(left[i].compareTo(right[j])<=0)
+			{
+			stringarray[k]=left[i];
+			i++;
+			}
+			else
+			{
+				stringarray[k]=right[j];
+				j++;
+			}
+			k++;
+		}
+		while(i<length1)
+		{
+		stringarray[k]=left[i];
+		k++;
+		i++;
+		}
+		while(j<length2)
+		{
+		stringarray[k]=right[j];
+		k++;
+		j++;
+		}
+		
+	}
+	public  void printArray(String[]stringarray)
+	{
+		int n = stringarray.length;
+		for (int i=0; i<n; ++i)
+			System.out.print(stringarray[i] + " ");
+		
+	}
+	/**Sorting of two String arrays using mergesort
+	 * @param stringarray
+	 * @param start
+	 * @param end
+	 */
+	public void mergeSort(String stringarray[], int start, int end) {
+		while (start < end) {
+			int mid = ((start + end) / 2);
+			mergeSort(stringarray, start, mid);
+			mergeSort(stringarray, mid + 1, end);
+			merge(stringarray, start, mid, end);
+		}
+	}
 }
-
-

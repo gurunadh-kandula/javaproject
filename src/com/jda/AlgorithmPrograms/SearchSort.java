@@ -25,7 +25,7 @@ public class SearchSort {
 		}
 		System.out.println("please enter the no.of strings u want to enter");
 		int input1 = utility.inputInteger();
-		String[] stringarray = new String[input];
+		String[] stringarray = new String[input1];
 		System.out.println("please enter the strings");
 		for (int i = 0; i < input1; i++) {
 			stringarray[i] = utility.inputstring();
