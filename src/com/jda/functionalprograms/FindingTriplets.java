@@ -23,6 +23,6 @@ public class FindingTriplets {
 	for (int i = 0; i < numbers; i++) {
 		numberarray[i] = utility.inputInteger();
  }
-	 utility.	findingTriplets(numberarray);
+	 utility.findingTriplets(numberarray);
 }
 }

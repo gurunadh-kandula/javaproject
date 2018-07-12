@@ -701,4 +701,53 @@ public class Utility {
 			merge(stringarray, start, mid, end);
 		}
 	}
+/*
+	public int vendingMachine( int[] notearray,int length,int input)
+	{
+		System.out.println(input);
+		if(input==0)
+			return 0;
+		int result=Integer.MAX_VALUE;
+		for(int i=0;i<length;i++)
+		{
+			if(notearray[i]<=input)
+			{
+				int subresult=vendingMachine(notearray,length,input-notearray[i]);
+				if(subresult!=Integer.MAX_VALUE&&subresult+1<result)
+					result=subresult+1;
+			}
+		}
+		
+		return result;
+	}
+	*/
+	public void dayWeek(int month,int day,int year)
+	{int y0,x,m0,d0;
+	y0=year-(14-month)/12;
+	x=y0+y0/4-y0/100+y0/400;
+	m0=month+12*((14-month)/12)-2;
+	d0=(day+x+31*m0/12)%7;
+	if(d0==0)
+	System.out.println("sunday");
+	if(d0==1)
+		System.out.println("monday");
+	if(d0==2)
+		System.out.println("tuesday");
+	if(d0==3)
+		System.out.println("wednesday");
+	if(d0==4)
+		System.out.println("thursday");
+	if(d0==5)
+		System.out.println("Friday");
+	
+	
+	if(d0==6)
+		System.out.println("saturday");
+	
+	
+	
+	
+	
+		
+	}
 }
