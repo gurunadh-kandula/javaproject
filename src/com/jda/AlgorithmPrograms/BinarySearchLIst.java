@@ -25,7 +25,7 @@ public class BinarySearchLIst {
 		Utility utility = new Utility();
 		System.out.println("please enter the string you want to search");
 		String search = utility.inputstring();
-		BufferedReader br = new BufferedReader(new FileReader("/home/bridgelabz/workspace/Strings"));
+		BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\1023404\\Desktop\\Strings.txt"));
 	    String line = null;
 	    ArrayList<String> list = new ArrayList<String>();
 

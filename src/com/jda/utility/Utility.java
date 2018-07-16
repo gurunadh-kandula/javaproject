@@ -340,8 +340,8 @@ public class Utility {
 	}
 
 	/**
-	 * Function to find the triplets in the given array that make the sum equal
-	 * to zero
+	 * Function to find the triplets in the given array that make the sum equal to
+	 * zero
 	 * 
 	 * @param numberarray
 	 */
@@ -401,8 +401,7 @@ public class Utility {
 	}
 
 	/**
-	 * Compute the windchill value using formula given by National Weather
-	 * Service
+	 * Compute the windchill value using formula given by National Weather Service
 	 * 
 	 * @param t
 	 * @param v
@@ -583,7 +582,7 @@ public class Utility {
 
 	public static <K extends Comparable<K>> boolean genericBinarySearch(K[] inputarray, K search, int start, int end) {
 		int mid;
-		mid = (start + (end - 1) / 2);
+		mid = ((start +end) / 2);
 		if (search.compareTo(inputarray[mid]) == 0)
 			return true;
 		else {
@@ -626,69 +625,62 @@ public class Utility {
 		}
 	}
 
-	
-	
-	
-	
-	/** Function to merge the string arrays
+	/**
+	 * Function to merge the string arrays
+	 * 
 	 * @param stringarray
 	 * @param start
 	 * @param mid
 	 * @param end
 	 */
-	public void merge(String stringarray[],int start,int mid,int end)
-	{ int length1=mid-start+1;
-	int length2=end-mid;
-	String []left=new String[length1];
-	String []right=new String[length2];
-	for(int i=0;i<length1;i++)
-	{
-		left[i]=stringarray[i+start];
-	
-	}
-		for(int i=0;i<length2;i++)
-		{
-			right[i]=stringarray[i+mid+1];
-			
+	public void merge(String stringarray[], int start, int mid, int end) {
+		int length1 = mid - start + 1;
+		int length2 = end - mid;
+		String[] left = new String[length1];
+		String[] right = new String[length2];
+		for (int i = 0; i < length1; i++) {
+			left[i] = stringarray[i + start];
+
 		}
-		int i=0,j=0;
-		int k=start;
-		while( i<length1&& j<length2)
-		{
-			if(left[i].compareTo(right[j])<=0)
-			{
-			stringarray[k]=left[i];
-			i++;
-			}
-			else
-			{
-				stringarray[k]=right[j];
+		for (int i = 0; i < length2; i++) {
+			right[i] = stringarray[i + mid + 1];
+
+		}
+		int i = 0, j = 0;
+		int k = start;
+		while (i < length1 && j < length2) {
+			if (left[i].compareTo(right[j]) <= 0) {
+				stringarray[k] = left[i];
+				i++;
+			} else {
+				stringarray[k] = right[j];
 				j++;
 			}
 			k++;
 		}
-		while(i<length1)
-		{
-		stringarray[k]=left[i];
-		k++;
-		i++;
+		while (i < length1) {
+			stringarray[k] = left[i];
+			k++;
+			i++;
 		}
-		while(j<length2)
-		{
-		stringarray[k]=right[j];
-		k++;
-		j++;
+		while (j < length2) {
+			stringarray[k] = right[j];
+			k++;
+			j++;
 		}
-		
+
 	}
-	public  void printArray(String[]stringarray)
-	{
+
+	public void printArray(String[] stringarray) {
 		int n = stringarray.length;
-		for (int i=0; i<n; ++i)
+		for (int i = 0; i < n; ++i)
 			System.out.print(stringarray[i] + " ");
-		
+
 	}
-	/**Sorting of two String arrays using mergesort
+
+	/**
+	 * Sorting of two String arrays using mergesort
+	 * 
 	 * @param stringarray
 	 * @param start
 	 * @param end
@@ -701,53 +693,121 @@ public class Utility {
 			merge(stringarray, start, mid, end);
 		}
 	}
-/*
-	public int vendingMachine( int[] notearray,int length,int input)
-	{
-		System.out.println(input);
-		if(input==0)
-			return 0;
-		int result=Integer.MAX_VALUE;
-		for(int i=0;i<length;i++)
-		{
-			if(notearray[i]<=input)
-			{
-				int subresult=vendingMachine(notearray,length,input-notearray[i]);
-				if(subresult!=Integer.MAX_VALUE&&subresult+1<result)
-					result=subresult+1;
+
+	/*
+	 * public int vendingMachine( int[] notearray,int length,int input) {
+	 * System.out.println(input); if(input==0) return 0; int
+	 * result=Integer.MAX_VALUE; for(int i=0;i<length;i++) { if(notearray[i]<=input)
+	 * { int subresult=vendingMachine(notearray,length,input-notearray[i]);
+	 * if(subresult!=Integer.MAX_VALUE&&subresult+1<result) result=subresult+1; } }
+	 * 
+	 * return result; }
+	 */
+	public void dayWeek(int month, int day, int year) {
+		int y0, x, m0, d0;
+		y0 = year - (14 - month) / 12;
+		x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
+		m0 = month + 12 * ((14 - month) / 12) - 2;
+		d0 = (day + x + 31 * m0 / 12) % 7;
+		if (d0 == 0)
+			System.out.println("sunday");
+		if (d0 == 1)
+			System.out.println("monday");
+		if (d0 == 2)
+			System.out.println("tuesday");
+		if (d0 == 3)
+			System.out.println("wednesday");
+		if (d0 == 4)
+			System.out.println("thursday");
+		if (d0 == 5)
+			System.out.println("Friday");
+
+		if (d0 == 6)
+			System.out.println("saturday");
+	}
+
+	/**
+	 * converts celsius to fahrenheit,fahrenheit to celsius
+	 * 
+	 * @param input
+	 * @param s
+	 */
+	public void temperatureConversion(int input, int s) {
+		int value;
+		if (s == 0) {
+			value = (input * 9 / 5) + 32;
+			System.out.println("Fahrenheit temperature is " + value);
+		} else {
+			value = (input - 32) * 5 / 9;
+			System.out.println("Celsius temperature is " + value);
+		}
+	}
+
+	/**
+	 * It find the monthly payment using the formula
+	 * 
+	 * @param P
+	 * @param Y
+	 * @param R
+	 */
+	public void monthlyPayment(double P, double Y, double R) {
+		double n = 12 * Y;
+		double r = R / (12 * 100);
+		double payment = (P * r) / (1 - Math.pow(1 + r, -n));
+		System.out.println("payment is  " + payment);
+
+	}
+
+	/**
+	 * newton method to find square root
+	 * 
+	 * @param input
+	 */
+	public void sqrtNewton(double input) {
+		double i = input;
+		double epsilon = 1e-15;
+		while (Math.abs(i - input / i) > (epsilon * i)) {
+
+			i = ((input / i) + i) / 2;
+		}
+		System.out.println("the square root of the number is" + i);
+	}
+
+	/**
+	 * convert the decimal to binary
+	 * 
+	 * @param input
+	 */
+	public void toBinary(int input) {
+		if (input > 1)
+			toBinary(input / 2);
+		System.out.print(input % 2 + " ");
+
+	}
+
+/*	public void swapNibble(int input) {
+		int n = (int) (Math.log(input) / Math.log(2));
+		int[] arr = new int[n+1];
+
+		for (int i = n; i >= 0; i--) {
+			int exp = (int) Math.pow(2, i);
+
+			if ((exp & input) == exp) {
+				arr[n - i] = 1;
+				System.out.print("1");
+
+			} else {
+				arr[n - i] = 0;
+				System.out.print("0");
+
 			}
 		}
-		
-		return result;
-	}
-	*/
-	public void dayWeek(int month,int day,int year)
-	{int y0,x,m0,d0;
-	y0=year-(14-month)/12;
-	x=y0+y0/4-y0/100+y0/400;
-	m0=month+12*((14-month)/12)-2;
-	d0=(day+x+31*m0/12)%7;
-	if(d0==0)
-	System.out.println("sunday");
-	if(d0==1)
-		System.out.println("monday");
-	if(d0==2)
-		System.out.println("tuesday");
-	if(d0==3)
-		System.out.println("wednesday");
-	if(d0==4)
-		System.out.println("thursday");
-	if(d0==5)
-		System.out.println("Friday");
+
+	}*/
 	
 	
-	if(d0==6)
-		System.out.println("saturday");
-	
-	
-	
-	
-	
-		
+	public void swapNibble(int input)
+	{
+		System.out.println((input&0x0F)<<4|(input&0xF0)>>4);
 	}
 }
