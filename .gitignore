@@ -3,11 +3,11 @@ bin
 ###################
 *.com
 *.class
+*.txt
 *.dll
 *.exe
 *.o
 *.so
-*.txt
 # Packages #
 ############
 # it's better to unpack these files and commit the raw source
