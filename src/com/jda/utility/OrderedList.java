@@ -15,8 +15,30 @@ public class OrderedList<T extends Comparable<T>> {
 			next = null;
 		}
 	}
-   
-    
+	public void orderedAdd(T key) {
+		Node<T> temp = head;
+		Node<T> prev = null;
+
+		while (temp != null && (key).compareTo(temp.value) <= 0) {
+		prev = temp;
+		temp = temp.next;
+		}
+
+		if (temp == head)
+		add(key);
+		else {
+		if (temp == null) {
+		Node<T> newnode = new Node<T>(key);
+		prev.next = newnode;
+		newnode.next = null;
+		} 
+		else {
+		Node<T> newnode = new Node<T>(key);
+		newnode.next = temp;
+		prev.next = newnode;
+		}
+		}
+		}
 	public void removeAt(T key) {
 		Node<T> temp = head;
 		Node<T> prev = null;
@@ -35,6 +57,26 @@ public class OrderedList<T extends Comparable<T>> {
 		else
 			prev.next = temp.next;
 
+	}
+
+	public boolean isEmpty() {
+		if (head == null)
+			return true;
+		else
+			return false;
+	}
+
+	public int size() {
+		int count = 0;
+		Node<T> temp = head;
+		while (temp != null) {
+			count++;
+			temp = temp.next;
+		}
+		return count;
+	}
+	public T peak() {
+		return head.value;
 	}
 
 	public void add(T data) {
@@ -65,7 +107,7 @@ public class OrderedList<T extends Comparable<T>> {
 			}
 		}
 	}
-   
+
 	public void printList() {
 		Node<T> temp = head;
 		while (temp != null) {
