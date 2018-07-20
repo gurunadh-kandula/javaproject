@@ -1,4 +1,4 @@
-package com.jda.AlgorithmPrograms;
+package com.jda.DataStructurePrograms;
 
 import java.util.ArrayList;
 import java.util.Arrays;
