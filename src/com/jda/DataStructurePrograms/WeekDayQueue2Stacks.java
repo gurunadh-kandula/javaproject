@@ -2,13 +2,13 @@ package com.jda.DataStructurePrograms;
 
 import java.util.HashMap;
 
-import com.jda.utility.Queue;
+import com.jda.utility.Queue2Stacks;
 import com.jda.utility.Utility;
 
-public class WeekDay {
+public class WeekDayQueue2Stacks {
 	public static void main(String args[]) {
 		Utility utility = new Utility();
-		HashMap<Integer, Queue<Integer>> week = new HashMap<>();
+		HashMap<Integer, Queue2Stacks<Integer>> week = new HashMap<>();
 		for (int i = 0; i < 6; i++) {
 			week.put(i, null);
 		}
@@ -29,7 +29,7 @@ public class WeekDay {
 		int d = utility.dayWeek(month, 1, year);
 		int count = 1;
 		for (int i = 0; i < 6; i++) {
-			Queue<Integer> queue = new Queue<Integer>();
+			Queue2Stacks<Integer> queue = new Queue2Stacks<Integer>();
 			week.put(i, queue);
 			for (int j = 0; j < 7; j++) {
 				if (i == 0 && j < d)
@@ -47,7 +47,7 @@ public class WeekDay {
 		}
 		for (int i = 0; i < 6; i++) {
 			for (int j = 0; j < 7; j++) {
-				int temp = week.get(i).dequeue().value;
+				int temp = week.get(i).dequeue();
 				if (temp <= 9) {
 					if (temp == 0)
 						System.out.print("   ");
