@@ -45,5 +45,6 @@ public class BankingCashCounter {
 				}
 			}
 		}
+		System.out.println("Amount in bank"+total);
 	}
 }

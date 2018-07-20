@@ -7,8 +7,6 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.io.PrintWriter;
-import java.io.BufferedReader;
-import java.io.FileReader;
 
 public class Utility {
 	Scanner scaninput;
@@ -467,7 +465,18 @@ public class Utility {
 
 		}
 	}
+	public ArrayList<Integer> Primesret(int input) {
+		int i;
+		ArrayList<Integer>array=new ArrayList<Integer>();
+		for (i = 2; i <= input; i++) {
+			if (checkPrime(i))
+				array.add(i);
+			else
+				continue;
 
+		}
+		return array;
+	}
 	/**
 	 * function to check whether a number is a palindrome or not
 	 * 
@@ -703,27 +712,14 @@ public class Utility {
 	 * 
 	 * return result; }
 	 */
-	public void dayWeek(int month, int day, int year) {
+	public int dayWeek(int month, int day, int year) {
 		int y0, x, m0, d0;
 		y0 = year - (14 - month) / 12;
 		x = y0 + y0 / 4 - y0 / 100 + y0 / 400;
 		m0 = month + 12 * ((14 - month) / 12) - 2;
 		d0 = (day + x + 31 * m0 / 12) % 7;
-		if (d0 == 0)
-			System.out.println("sunday");
-		if (d0 == 1)
-			System.out.println("monday");
-		if (d0 == 2)
-			System.out.println("tuesday");
-		if (d0 == 3)
-			System.out.println("wednesday");
-		if (d0 == 4)
-			System.out.println("thursday");
-		if (d0 == 5)
-			System.out.println("Friday");
-
-		if (d0 == 6)
-			System.out.println("saturday");
+		return d0;
+		
 	}
 
 	/**
