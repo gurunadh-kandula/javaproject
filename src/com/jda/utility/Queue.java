@@ -8,6 +8,10 @@ public class Queue<T extends Comparable<T>> {
 		public S value;
 		public Qnode<S> next;
         public String purpose=null;
+        Qnode(S data)
+        {value = data;
+		next = null;
+        }
 		Qnode(S data,String pur) {
 			value = data;
 			purpose=pur;
@@ -18,8 +22,16 @@ public class Queue<T extends Comparable<T>> {
 	public Queue() {
 		rear = front = null;
 	}
-
-	public void enqueue(T data,String purpose) {
+	public void enqueue(T data) {
+		Qnode<T> newnode = new Qnode<T>(data);
+		if (rear == null) {
+			rear = front = newnode;
+			return;
+		}
+		rear.next = newnode;
+		rear = newnode;
+	}
+	public void enqueuebank(T data,String purpose) {
 		Qnode<T> newnode = new Qnode<T>(data,purpose);
 		if (rear == null) {
 			rear = front = newnode;

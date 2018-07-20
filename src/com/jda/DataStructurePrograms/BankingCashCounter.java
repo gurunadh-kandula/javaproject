@@ -19,12 +19,12 @@ public class BankingCashCounter {
 			if (purpose.compareTo("deposit") == 0) {
 				System.out.println(i+1+"   person please enter the amount you want to deposit");
 				int amount = utility.inputInteger();
-				queue.enqueue(amount, purpose);
+				queue.enqueuebank(amount, purpose);
 
 			} else {
 				System.out.println(i+1+"  please enter the amount you want to withdraw");
 				int amount = utility.inputInteger();
-				queue.enqueue(amount, purpose);
+				queue.enqueuebank(amount, purpose);
 
 			}
 		}
