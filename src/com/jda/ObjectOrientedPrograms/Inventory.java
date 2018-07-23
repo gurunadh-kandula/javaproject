@@ -1,50 +1,49 @@
 package com.jda.ObjectOrientedPrograms;
 
-import java.io.FileReader;
+import java.io.*;
 import java.util.Iterator;
 import java.util.Map;
 
-
-import org.json.simple.JSONArray;
-
-import org.json.simple.parser.JSONParser;
-import org.json.simple.JSONObject;
+import org.json.simple.*;
+import org.json.simple.parser.*;
 
 public class Inventory {
-	public static void main(String args[]) throws Exception {
-		JSONParser parser = new JSONParser();
-		
-			Object object = parser.parse(new FileReader("‪‪C:\\Users\\1023404\\Desktop\\Inventory.txt"));
-			JSONObject jsonobject = (JSONObject) object;
-			JSONArray ja = (JSONArray) jsonobject.get("Rice");
-			System.out.println("Types of rice");
-			Iterator itr1 = ja.iterator();
-			while (itr1.hasNext()) {
-				Iterator<Map.Entry> itr2 = ((Map) itr1.next()).entrySet().iterator();
-				while (itr2.hasNext()) {
-					Map.Entry pair = itr2.next();
-					System.out.println(pair.getKey() + ":" + pair.getValue());
 
-				}
+	public static void main(String[] args) throws Exception{
 
-			}
-			System.out.println("Details about pulses");
-			Map pulses = ((Map) jsonobject.get("Pulses"));
-			Iterator<Map.Entry> itr2 = pulses.entrySet().iterator();
-			while (itr2.hasNext()) {
-				Map.Entry pair = itr2.next();
-				System.out.println(pair.getKey() + ":" + pair.getValue());
 
-			}
-			System.out.println("Details about Wheat");
-			Map wheat = ((Map) jsonobject.get("Wheat"));
-			itr2 = wheat.entrySet().iterator();
-			while (itr2.hasNext()) {
-				Map.Entry pair = itr2.next();
-				System.out.println(pair.getKey() + ":" + pair.getValue());
-
-			}
-
-		
+	Object ob = new JSONParser().parse(new FileReader("C:\\Users\\1023404\\Desktop\\Inventory.txt"));
+	JSONObject jo = (JSONObject) ob;
+	JSONArray ja =  (JSONArray) jo.get("Rice");
+	Iterator itr1 = ja.iterator();
+	Iterator<Map.Entry> itr2;
+	System.out.println("Info about rice in inventory");
+	while(itr1.hasNext()) {
+	itr2 = ((Map)itr1.next()).entrySet().iterator();
+	while(itr2.hasNext()) {
+	Map.Entry pair = itr2.next();
+	System.out.println(pair.getKey() + " : " + pair.getValue());
 	}
+	}
+	System.out.println();
+
+	System.out.println("Info about wheat in inventory");
+	Map w = (Map)jo.get("Wheat");
+	itr2 = w.entrySet().iterator();
+	while(itr2.hasNext()) {
+	Map.Entry pair = itr2.next();
+	System.out.println(pair.getKey() + " : " + pair.getValue());
+	}
+	System.out.println();
+
+	System.out.println("Info about pulses in inventory");
+	Map p = (Map)jo.get("Pulses");
+	itr2 = p.entrySet().iterator();
+	while(itr2.hasNext()) {
+	Map.Entry pair = itr2.next();
+	System.out.println(pair.getKey() + " : " + pair.getValue());
+	}
+
+	}
+
 }
