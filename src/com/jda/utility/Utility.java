@@ -4,8 +4,10 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.io.PrintWriter;
 
 public class Utility {
@@ -465,9 +467,10 @@ public class Utility {
 
 		}
 	}
+
 	public ArrayList<Integer> Primesret(int input) {
 		int i;
-		ArrayList<Integer>array=new ArrayList<Integer>();
+		ArrayList<Integer> array = new ArrayList<Integer>();
 		for (i = 2; i <= input; i++) {
 			if (checkPrime(i))
 				array.add(i);
@@ -477,6 +480,7 @@ public class Utility {
 		}
 		return array;
 	}
+
 	/**
 	 * function to check whether a number is a palindrome or not
 	 * 
@@ -591,7 +595,7 @@ public class Utility {
 
 	public static <K extends Comparable<K>> boolean genericBinarySearch(K[] inputarray, K search, int start, int end) {
 		int mid;
-		mid = ((start +end) / 2);
+		mid = ((start + end) / 2);
 		if (search.compareTo(inputarray[mid]) == 0)
 			return true;
 		else {
@@ -719,7 +723,7 @@ public class Utility {
 		m0 = month + 12 * ((14 - month) / 12) - 2;
 		d0 = (day + x + 31 * m0 / 12) % 7;
 		return d0;
-		
+
 	}
 
 	/**
@@ -781,29 +785,46 @@ public class Utility {
 
 	}
 
-/*	public void swapNibble(int input) {
-		int n = (int) (Math.log(input) / Math.log(2));
-		int[] arr = new int[n+1];
+	/*
+	 * public void swapNibble(int input) { int n = (int) (Math.log(input) /
+	 * Math.log(2)); int[] arr = new int[n+1];
+	 * 
+	 * for (int i = n; i >= 0; i--) { int exp = (int) Math.pow(2, i);
+	 * 
+	 * if ((exp & input) == exp) { arr[n - i] = 1; System.out.print("1");
+	 * 
+	 * } else { arr[n - i] = 0; System.out.print("0");
+	 * 
+	 * } }
+	 * 
+	 * }
+	 */
 
-		for (int i = n; i >= 0; i--) {
-			int exp = (int) Math.pow(2, i);
-
-			if ((exp & input) == exp) {
-				arr[n - i] = 1;
-				System.out.print("1");
-
-			} else {
-				arr[n - i] = 0;
-				System.out.print("0");
-
-			}
-		}
-
-	}*/
-	
-	
-	public void swapNibble(int input)
-	{
-		System.out.println((input&0x0F)<<4|(input&0xF0)>>4);
+	public void swapNibble(int input) {
+		System.out.println((input & 0x0F) << 4 | (input & 0xF0) >> 4);
 	}
+
+	/**
+	 * purpose is to create the JSON for a array of a particular inventory
+	 * @param products
+	 * @return
+	 */
+	public static StringBuilder createJsonfromArray(Collection products) {
+		StringBuilder jsonstring = new StringBuilder();
+		jsonstring.append('[');
+		Iterator iterator = products.iterator();
+		while (iterator.hasNext()) {
+	
+			jsonstring.append(iterator.next());
+			if (iterator.hasNext()) {
+				jsonstring.append(",");
+			}
+			
+
+		}
+		jsonstring.append("]");
+		return jsonstring;
+
+	}
+
 }
