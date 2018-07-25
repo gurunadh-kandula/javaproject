@@ -7,5 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/1023404/Downloads/json-simple-1.1.1.jar"/>
+	<classpathentry kind="lib" path="C:/Users/1023404/Desktop/com.fasterxml.jackson.core.jar"/>
+	<classpathentry kind="lib" path="C:/Users/1023404/Desktop/com.fasterxml.jackson.databind.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

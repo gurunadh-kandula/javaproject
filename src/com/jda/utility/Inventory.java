@@ -51,7 +51,7 @@ public class Inventory {
 
 	@Override
 	public String toString() {
-		return "{" + "\"name\":\"" + name + ",\"" + "\"weight\":\"" + weight + ",\"priceperkg\":\"" + priceperkg + "}";
+		return "{" + "\"name\":\"" + name + "\"," + "\"weight\":" + weight + ",\"priceperkg\":" + priceperkg + "}";
 
 	}
 }
