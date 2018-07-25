@@ -28,7 +28,7 @@ public class SearchSort {
 		String[] stringarray = new String[input1];
 		System.out.println("please enter the strings");
 		for (int i = 0; i < input1; i++) {
-			stringarray[i] = utility.inputString();
+			stringarray[i] = utility.inputstring();
 
 		}
 		System.out.println("using generic bubble sort");

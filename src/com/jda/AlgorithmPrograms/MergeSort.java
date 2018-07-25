@@ -16,16 +16,16 @@ public class MergeSort {
 	public static void main(String[] args) {
 
 		Utility utility = new Utility();
-		/*System.out.println("please enter the no.of strings u want to enter");
-	int input1 = utility.inputInteger();*/
-		String[] stringarray ={"guru","abc","jfg"};
-		/*
-		System.out.println("please enter the strings");
-		for (int i = 0; i < input1; i++) {
-			stringarray[i] = utility.inputString();
-		}
-			utility.mergeSort(stringarray,0,input1-1);*/
-				utility.mergeSort(stringarray,0,2);
+		System.out.println("please enter the no.of strings u want to enter");
+	int input = utility.inputInteger();
+	String[] stringarray = new String[input];
+	System.out.println("please enter the strings");
+	for (int i = 0; i < input; i++) {
+		stringarray[i] = utility.inputstring();
+
+	}
+			utility.mergeSort(stringarray,0,input-1);
+			
 		utility.printArray(stringarray);
 		
 }
