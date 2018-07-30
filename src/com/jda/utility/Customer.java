@@ -1,28 +1,29 @@
 package com.jda.utility;
 
-import org.json.simple.JSONObject;
+import java.util.ArrayList;
 
 public class Customer {
 	private String firstname;
 	private String lastname;
-	private String phoneno;
-	private long amount;
-	public Customer(JSONObject jsonobject) {
-		firstname = (String) jsonobject.get("Firstname");
-		lastname= (String) jsonobject.get("Lastname");
-		phoneno = (String) jsonobject.get("mobileno");
-		amount=(long)jsonobject.get("amount");
+	private String mobileno;
+	private double balance;
+    Utility utility = new Utility();
+    ArrayList<StockPortfolio>list=new ArrayList();
+	Customer()
+	{System.out.println("please enter firstname,lastname,mobileno,balance,holdings");
+	firstname=utility.inputstring();
+	lastname=utility.inputstring();
+	mobileno=utility.inputstring();
+	balance=utility.inputdouble();
 	}
-	public Customer(String firstname, String lastname, String phoneno,long amount) {
-		this.firstname=firstname;
-		this.lastname=lastname;
-		this.phoneno=phoneno;
-		this.amount=amount;
-	}
+	
+	
+	
+	
 	
 	@Override
 	public String toString() {
-		return "{" + "\"Firstname\":\"" + firstname + ",\"" + "\"Lastname\":\"" + lastname + ",\"mobileno\":\"" + phoneno +"\"amount\":\"" + amount + "," +"}"; 
+		return "{" + "\"firstname\":\"" + firstname + ",\"" + "\"lastname\":\"" + lastname + "\",\"mobileno\":\"" +mobileno+"\",\"balance\":\"" + balance+ "," +"}"; 
 
 	}
 	

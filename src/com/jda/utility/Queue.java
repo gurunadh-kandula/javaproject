@@ -3,7 +3,7 @@ package com.jda.utility;
 public class Queue<T extends Comparable<T>> {
 	public Qnode<T> front = null;
 	public Qnode<T> rear = null;
-
+	public int size;
 	public static class Qnode<S> {
 		public S value;
 		public Qnode<S> next;
@@ -30,6 +30,7 @@ public class Queue<T extends Comparable<T>> {
 		}
 		rear.next = newnode;
 		rear = newnode;
+		size++;
 	}
 	public void enqueuebank(T data,String purpose) {
 		Qnode<T> newnode = new Qnode<T>(data,purpose);
@@ -48,8 +49,9 @@ public class Queue<T extends Comparable<T>> {
 		front = front.next;
 		if (front == null)
 			rear = null;
+		size--;
 		return temp;
-
+     
 	}
 	
 }

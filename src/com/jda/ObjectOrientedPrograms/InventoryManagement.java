@@ -67,7 +67,7 @@ public class InventoryManagement {
 		StringBuilder jsonstring = createJSONString(inventoryMap);
 
 		try {
-			PrintWriter output = new PrintWriter(new File("output\\Inventoryout.txt"));
+			PrintWriter output = new PrintWriter(new File("input\\Inventory.txt"));
 			output.print(jsonstring);
 			output.flush();
 			output.close();

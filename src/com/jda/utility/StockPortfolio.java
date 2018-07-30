@@ -4,21 +4,21 @@ import org.json.simple.JSONObject;
 
 public class StockPortfolio {
 	private String name;
-	private long noofshare;
+	private long noofshares;
 	private long shareprice;
 	public StockPortfolio(JSONObject jsonobject) {
 		name = (String) jsonobject.get("name");
-	    noofshare= (long) jsonobject.get("noofshare");
+	    noofshares= (long) jsonobject.get("noofshares");
 	    shareprice = (long) jsonobject.get("shareprice");
 	}
-		public StockPortfolio(String name, long noofshare, long shareprice) {
-			this.noofshare = noofshare;
+		public StockPortfolio(String name, long noofshares, long shareprice) {
+			this.noofshares = noofshares;
 			this.shareprice = shareprice;
 			this.name = name;
 		}
 
 		public long getnoofshare() {
-			return noofshare;
+			return noofshares;
 		}
 
 		public String getname() {
@@ -30,8 +30,8 @@ public class StockPortfolio {
 			return shareprice;
 		}
 
-		public void setnoofshare(long noofshare) {
-			this.noofshare = noofshare;
+		public void setnoofshare(long noofshares) {
+			this.noofshares = noofshares;
 		}
 
 		public void setshareprice(long shareprice) {
@@ -43,12 +43,12 @@ public class StockPortfolio {
 		}
 
 		public long value() {
-			return noofshare*shareprice;
+			return noofshares*shareprice;
 		}
 
 		@Override
 		public String toString() {
-			return "{" + "\"name\":\"" + name + ",\"" + "\"noofshare\":\"" + noofshare + ",\"shareprice\":\"" + shareprice + "}";
+			return "{" + "\"name\":\"" + name + ",\"" + "\"noofshares\":\"" + noofshares + ",\"shareprice\":\"" + shareprice + "}";
 
 		}
 	
